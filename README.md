@@ -2,7 +2,7 @@
 
 Provides a service which wraps the official PubNub JS SDK. Based primarily on Sunny gleason's code but updated for Ember-CLI.
 
-## UNDER DEVELOPMENT, UNTESTED -- DO NOT USE
+## UNDER DEVELOPMENT, UNTESTED
 
 You've been warned.
 
