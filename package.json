@@ -37,7 +37,9 @@
     "ember-try": "0.0.6"
   },
   "keywords": [
-    "ember-addon"
+    "ember-addon",
+    "PubNub",
+    "WebSocket"
   ],
   "dependencies": {
     "ember-cli-babel": "^5.0.0"
