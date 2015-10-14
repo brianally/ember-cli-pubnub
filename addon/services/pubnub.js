@@ -1,3 +1,4 @@
+/*jshint -W030 */
 import Ember from "ember";
 
 export default Ember.Service.extend(Ember.Evented, {
@@ -127,7 +128,7 @@ export default Ember.Service.extend(Ember.Evented, {
 				});
 			});
 		};
-	}
+	},
 
 	_installHandlers: function(args) {
 		let self      = this;
@@ -149,12 +150,12 @@ export default Ember.Service.extend(Ember.Evented, {
 		};
 
 		args.presence = function() {
+			let _base1, _base2, cpos;
 			let channel = args.channel;
 			let event   = arguments[0];
 
 			if (event.uuids) {
-				PN.each(event.uuids, function(uuid) {
-					let _base1, _base2, cpos;
+				PN.each(event.uuids, function(uuid) {					
 					let state = uuid.state || null;
 
 					uuid = uuid.uuid | uuid;
