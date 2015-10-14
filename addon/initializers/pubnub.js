@@ -7,6 +7,6 @@ export default initialize(container, app) {
 });
 
 export default {
-	name      : "PubNubService",
+	name      : "pubnub",
 	initialize: initialize
 };
