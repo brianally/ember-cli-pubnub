@@ -1,3 +1,4 @@
+/* global PUBNUB */
 /*jshint -W030 */
 import Ember from "ember";
 
@@ -8,7 +9,7 @@ export default Ember.Service.extend(Ember.Evented, {
 	setup: function() {
 		let config = this.container.lookupFactory("config.environment");
 
-		if (window.PUBNUB === void 0) {
+		if (PUBNUB === void 0) {
 			throw new Ember.Error("ember-cli-pubnub: PubNub JS SDK not found");
 		}
 
@@ -16,7 +17,7 @@ export default Ember.Service.extend(Ember.Evented, {
 			throw new Ember.Error("ember-cli-pubnub: no configuration in config.environment");
 		}
 
-		let pn = window.PUBNUB.init(config.pubnub);
+		let pn = PUBNUB.init(config.pubnub);
 
 		// ************************************************* Ember.A Ember.Object ??
 		this.get("pnstate")["_channels"] = [];
