@@ -1,4 +1,3 @@
-import Ember from "ember";
-import pubnub from "ember-cli-pubnub/services/pubnub";
+import PubNubService from "ember-cli-pubnub/services/pubnub";
 
-export default pubnub;
+export default PubNubService;
