@@ -7,16 +7,20 @@ export default Ember.Service.extend(Ember.Evented, {
 	setup: function() {
 		let config = this.container.lookupFactory("config.environment");
 
-		if (!config.APP.pubnub){
-			throw "ember-cli-pubnub: no configuration in config.environment";
+		if (window.PUBNUB === void 0) {
+			throw new Ember.Error("ember-cli-pubnub: PubNub JS SDK not found");
 		}
 
-		let pn = window.PUBNUB.init(config.APP.pubnub);
+		if (config.pubnub === void 0){
+			throw new Ember.Error("ember-cli-pubnub: no configuration in config.environment");
+		}
+
+		let pn = window.PUBNUB.init(config.pubnub);
 
 		// ************************************************* Ember.A Ember.Object ??
-		this.get('pnstate')['_channels'] = [];
-		this.get('pnstate')['_presence'] = {};
-		this.get('pnstate')['_presData'] = {};
+		this.get("pnstate")["_channels"] = [];
+		this.get("pnstate")["_presence"] = {};
+		this.get("pnstate")["_presData"] = {};
 
 		return this.set("PN", pn);
 
@@ -28,7 +32,6 @@ export default Ember.Service.extend(Ember.Evented, {
 
 	listPresence: function(channel) {
 		let _ref;
-
 		return (_ref = this.get("pnState")["_presence"][channel]) != null ? _ref.slice(0) : void 0;
 	},
 
@@ -127,16 +130,17 @@ export default Ember.Service.extend(Ember.Evented, {
 	}
 
 	_installHandlers: function(args) {
-		let self = this;
-		let PN = this.get("PN");
-		let pnState = this.get("pnState");
-		let _message = args.message;
+		let self      = this;
+		let PN        = this.get("PN");
+		let pnState   = this.get("pnState");
+		let _message  = args.message;
+		let _presence = args.presence;
 
 		args.message = function() {
 			self.trigger(self.msgEvent(args.channel), {
+				channel:args.channel,
 				message: arguments[0],
-				env    : arguments[1],
-				channel:args.channel
+				env    : arguments[1]
 			});
 
 			if (_message) {
@@ -144,25 +148,25 @@ export default Ember.Service.extend(Ember.Evented, {
 			}
 		};
 
-		let _presence = args.presence;
-
 		args.presence = function() {
 			let channel = args.channel;
-			let event = arguments[0];
+			let event   = arguments[0];
 
 			if (event.uuids) {
 				PN.each(event.uuids, function(uuid) {
 					let _base1, _base2, cpos;
 					let state = uuid.state || null;
+
 					uuid = uuid.uuid | uuid;
 
 					(_base1 = pnState["_presence"])[channel] || (_base1[channel] = []);
 
-					if(pnState["_presence"][channel].indexOf(uuid) < 0) {
+					if (pnState["_presence"][channel].indexOf(uuid) < 0) {
 						pnState["_presence"][channel].push(uuid);
 					}
 
 					(_base2 = pnState["_presData"])[channel] || (_base2[channel] = []);
+
 					if (state) {
 						return pnState["_presData"][channel][uuid] = state;
 					}
@@ -194,8 +198,8 @@ export default Ember.Service.extend(Ember.Evented, {
 
 			return self.trigger(self.prsEvent(args.channel), {
 				event  : event,
-				message: arguments[1],
-				channel: channel
+				channel: channel,
+				message: arguments[1]
 			});
 		};
 		return args;
