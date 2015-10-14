@@ -1,5 +1,5 @@
 /* global PUBNUB */
-/*jshint -W030 */
+/* jshint -W030 */
 import Ember from "ember";
 
 export default Ember.Service.extend(Ember.Evented, {
@@ -19,7 +19,7 @@ export default Ember.Service.extend(Ember.Evented, {
 
 		let pn = PUBNUB.init(config.pubnub);
 
-		// ************************************************* Ember.A Ember.Object ??
+		// ************************************************* Ember.A, Ember.Object
 		this.get("pnstate")["_channels"] = [];
 		this.get("pnstate")["_presence"] = {};
 		this.get("pnstate")["_presData"] = {};

@@ -6,6 +6,6 @@ module.exports = {
 
   included: function(app) {
   	this._super.included(app);
-  	app.import(app.bowerDirectory + "pubnub/web/pubnub.js");
+  	app.import("node_modules/ember-cli-pubnub/" + app.bowerDirectory + "/pubnub/web/pubnub.js");
   }
 };

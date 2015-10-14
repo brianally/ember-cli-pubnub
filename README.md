@@ -1,5 +1,12 @@
 # Ember-cli-pubnub
 
+Provides a service which wraps the official PubNub JS SDK. Based primarily on Sunny gleason's code but updated for Ember-CLI.
+
+## UNDER DEVELOPMENT, UNTESTED -- DO NOT USE
+
+You've been warned.
+
+
 This README outlines the details of collaborating on this Ember addon.
 
 ## Installation
