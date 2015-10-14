@@ -1,6 +1,6 @@
 # Ember-cli-pubnub
 
-Provides a service which wraps the official PubNub JS SDK. Based primarily on Sunny gleason's code but updated for Ember-CLI.
+Provides a service which wraps the official PubNub JS SDK. Based primarily on Sunny Gleason's [pubnub-ember](https://github.com/pubnub/pubnub-ember) but updated for Ember-CLI.
 
 ## UNDER DEVELOPMENT, UNTESTED
 
