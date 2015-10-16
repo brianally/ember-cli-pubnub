@@ -1,5 +1,5 @@
-/* global PUBNUB */
-/* jshint -W030 */
+/*global PUBNUB */
+/*jshint -W030 */
 import Ember from "ember";
 
 export default Ember.Service.extend(Ember.Evented, {
