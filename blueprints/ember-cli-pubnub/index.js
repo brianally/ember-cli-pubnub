@@ -2,6 +2,7 @@
 
 module.exports = {
   description: "Provides the PubNub JavaScript SDK",
+  normalizeEntityName: function() {},
 
   afterInstall: function(options) {
   	var ui = this.ui;
