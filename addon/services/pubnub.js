@@ -88,7 +88,9 @@ export default Ember.Service.extend(Ember.Evented, {
 	},
 
 	subscribe: function(args) {
-		let _base, _name, pnState = this.get("pnState");
+		let _base, _name;
+		let pnState = this.get("pnState");
+		let PN = this.get("PN");
 
 		//args = this._installHandlers(args);
 
@@ -98,7 +100,7 @@ export default Ember.Service.extend(Ember.Evented, {
 
 		(_base = pnState["_presence"])[_name = args.channel] || (_base[_name] = []);
 
-		return this.get("PN")["subscribe"].apply(this.get("PN"), args);
+		return PN["subscribe"](args);
 	},
 
 	unsubscribe: function(args) {
