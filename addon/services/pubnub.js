@@ -92,7 +92,7 @@ export default Ember.Service.extend(Ember.Evented, {
 		let pnState = this.get("pnState");
 		let PN = this.get("PN");
 
-		//args = this._installHandlers(args);
+		args = this._installHandlers(args);
 
 		if (pnState["_channels"].indexOf(args.channel) < 0) {
 			pnState["_channels"].push(args.channel);
