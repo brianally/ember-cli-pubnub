@@ -20,9 +20,9 @@ export default Ember.Service.extend(Ember.Evented, {
 		let pn = PUBNUB.init(config.pubnub);
 
 		// ************************************************* Ember.A, Ember.Object
-		this.get("pnstate")["_channels"] = [];
-		this.get("pnstate")["_presence"] = {};
-		this.get("pnstate")["_presData"] = {};
+		this.get("pnState")["_channels"] = [];
+		this.get("pnState")["_presence"] = {};
+		this.get("pnState")["_presData"] = {};
 
 		return this.set("PN", pn);
 
