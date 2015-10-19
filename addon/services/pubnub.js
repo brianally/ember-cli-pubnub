@@ -51,7 +51,8 @@ export default Ember.Service.extend(Ember.Evented, {
 
 	publish: function(args) {
 		console.dir(args);
-		return this.get("PN")["publish"].apply(this.get("PN"), args);
+		return this.get("PN")["publish"](args);
+		//return this.get("PN")["publish"].apply(this.get("PN"), args);
 	},
 
 	state: function(args) {
