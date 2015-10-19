@@ -7,7 +7,7 @@ export default Ember.Service.extend(Ember.Evented, {
 	pnState: {},
 
 	setup: function() {
-		let config = this.container.lookupFactory("config.environment");
+		let config = this.container.lookupFactory("config:environment");
 
 		if (PUBNUB === void 0) {
 			throw new Ember.Error("ember-cli-pubnub: PubNub JS SDK not found");
