@@ -6,11 +6,11 @@ module.exports = {
 
   afterInstall: function(options) {
   	var ui = this.ui;
-    ui.writeLine("adding pubnub Bower package?");
+    ui.writeLine("adding pubnub JS SDK Bower package");
 
     return this.addBowerPackageToProject("pubnub", "~3.7.15")
     	.then(function() {
-    		ui.writeLine("added pubnub Bower package!");
+    		ui.writeLine("added pubnub JS SDK Bower package");
     	});
   }
 };
